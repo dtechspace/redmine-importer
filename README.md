@@ -24,6 +24,16 @@ cd redmine-importer
 mkdir img
 ```
 
+### Changes to the Assembla Library
+
+During the development of this project, we've found that the assembla API python wrapper library (https://github.com/markfinger/assembla) does not actually query all wiki pages from the Assembla space. 
+
+To remedy this issue, change the parameter `get_all` in the `_get_json` function in (https://github.com/markfinger/assembla/blob/master/assembla/api.py) to True after installation.
+
+```
+def _get_json(self, model, space=None, rel_path=None, extra_params=None, get_all=True):
+```
+
 ### Settings
 
 In order to specify which Assembla space and Redmine project to target, we've
